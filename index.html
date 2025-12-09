@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Навігація</title>
+  <!-- Підключаємо CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+
+
+  <!-- Панель -->
+  <div class="navbar">
+    <img src="ggt.png" style="height: 30; width: 20;" alt="Логотип">
+
+    <div class="nav-links">
+      <a href="index.html">Головна</a>
+      <a href="page1.html">Перелік пісень</a>
+      <a href="page2.html">Цікава інформація</a>
+      <a href="http://127.0.0.1:8082/putanua.php">Опитування</a>
+      <a href="page4.html">Гра-вікторина</a>
+    </div>
+  </div>
+
+  <!-- Контент -->
+  <div class="content">
+    <h1>ТОП 15 СПІВАКІВ </h1>
+    <h1>Які зараз на хайпі</h1>
+    <p></p>
+  </div>
+
+</body>
+ <!-- Галерея -->
+  <div class="gallery">
+    <div class="card">
+      <img src="parfeniuk.webp" alt="Співак 1">
+      <a href="singer1.html">Parfeniuk</a>
+    </div>
+    <div class="card">
+      <img src="channels4_profile.jpg" alt="Співак 2">
+      <a href="singer2.html">DOROFEEVA</a>
+    </div>
+    <div class="card">
+      <img src="oleg.jpg" alt="Співак 3">
+      <a href="singer3.html">Шугар</a>
+    </div>
+    <div class="card">
+      <img src="YAKTAK.jpg" alt="Співак 4">
+      <a href="singer4.html">YAKTAK</a>
+    </div>
+    <div class="card">
+      <img src="pirovarov.jpg" alt="Співак 5">
+      <a href="singer5.html">Artem Pivovarov</a>
+    </div>
+    <div class="card">
+      <img src="klavdia.jpg" alt="Співак 6">
+      <a href="singer6.html">Klavdia Petrivna</a>
+    </div>
+    <div class="card">
+      <img src="jerry-heil-2.jpg" alt="Співак 7">
+      <a href="singer7.html">Jerry Heil</a>
+    </div>
+    <div class="card">
+      <img src="drevo.webp" alt="Співак 8">
+      <a href="singer8.html">DREVO</a>
+    </div>
+    <div class="card">
+      <img src="Vitalii_Kozlovskyi.jpg" alt="Співак 9">
+      <a href="singer9.html">Віталій Козловський</a>
+    </div>
+    <div class="card">
+      <img src="Kola_ava.jpg" alt="Співак 10">
+      <a href="singer10.html">Kola</a>
+    </div>
+    <div class="card">
+      <img src="monatik.webp" alt="Співак 11">
+      <a href="singer11.html">Monatik</a>
+    </div>
+    <div class="card">
+      <img src="volkanov.jpg" alt="Співак 12">
+      <a href="singer12.html">Volkanov</a>
+    </div>
+    <div class="card">
+      <img src="skofka.webp" alt="Співак 13">
+      <a href="singer13.html">Skofka</a>
+    </div>
+    <div class="card">
+      <img src="alyona-alyona.png" alt="Співак 14">
+      <a href="singer14.html">alyona alyona</a>
+    </div>
+    <div class="card">
+      <img src="fiinka.jpg" alt="Співак 15">
+      <a href="singer15.html">FIINKA</a>
+    </div>
+  </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+<div class="footer">
+    © 2025 Мій сайт.
+    <br><h1>Привіт!</h1>
+  <p>Співаки стоять у випадковому порядку, не залежач від популярності<br>Вся інформація взята з вікіпедій та фотографії з інтернету
+  <br>Пісні взяті у випадковому поряду не залежно від року написання чи від популярності.<br>Якщо є запитання до автора сторінки, можете задати їх мені особисто
+  <br> <div class="social-buttons">
+    <a href="https://t.me/GrechkaGrechk" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+    </a>
+    <a href="https://www.instagram.com/_art_em08?igsh=MWFsYXRnMnQ0YjVlOA==" target="_blank">
+      <img src="Instagram.svg" alt="Instagram" />
+    </a>
+  </div></p>
+  </div>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бічна панель</title>
+<style>
+  /* Загальні стилі сторінки */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* твій фон */
+    color: #222;               /* колір тексту */
+  }
+
+  main {
+    padding: 40px;
+  }
+
+  h1 {
+    color: #08ff5a; 
+  }
+
+  /* Бічна панель */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -220px; /* прихована спочатку */
+    width: 200px;
+    height: 100%;
+    background-color: #333; /* темний фон панелі */
+    color: white;
+    padding-top: 60px;
+    transition: left 0.4s ease;
+    z-index: 1000; /* нижче за кнопку, але вище за контент */
+    box-shadow: 3px 0 8px rgba(0,0,0,0.3);
+  }
+
+  /* Кнопка відкриття */
+  .toggle-btn {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: background 0.3s;
+    z-index: 1001;
+  }
+
+  .toggle-btn:hover {
+    background-color: #444;
+  }
+
+  /* Посилання в панелі */
+  .sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    background-color: #555;
+  }
+
+  /* Коли панель активна */
+  .sidebar.active {
+    left: 0;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Кнопка відкриття -->
+<div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+<!-- Бічна панель -->
+<div class="sidebar" id="sidebar">
+  <a href="index.html">🏠 Головна</a>
+  <a href="page1.html">🎶Перелік пісень</a>
+  <a href="page2.html">ℹ️ Цікава інформація</a>
+  <a href="page3.html">💬 Чат</a>
+  <a href="page4.html">❓Гра вікторина</a>
+  <header>
+  <button id="toggleDecor">🕸️ Хелловін ON</button>
+</header>
+</div>
+
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+
+
+
+
+
+
+
+<style>
+
+
+/* --- Контейнер для декорацій --- */
+.decorations {
+  position: fixed;      
+  top: 60px;            
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  pointer-events: none; 
+  z-index: 1100;        
+}
+
+/* --- Павутина --- */
+.web {
+  position: fixed;  
+  width: 400px;
+  opacity: 0.6;
+  z-index: 1110;
+}
+
+.web.left {
+  top: 0px; 
+  left: 0px;
+}
+
+.web.right {
+  top: 0px;
+  right: 0px;
+}
+
+/* --- Гарбузи --- */
+.pumpkin {
+  position: fixed;
+  width: 100px;
+  bottom: 20px;
+  z-index: 1110;
+  animation: float 3s ease-in-out infinite;
+}
+
+.pumpkin.left {
+  left: 10%;
+}
+
+.pumpkin.right {
+  right: 10%;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- Кажани --- */
+.bat {
+  position: fixed;
+  width: 100px;
+  z-index: 1110;
+  opacity: 0.8;
+  animation: fly 6s linear infinite;
+}
+
+.bat:nth-child(1) { top: 50px; left: -50px; animation-delay: 0s; }
+.bat:nth-child(2) { top: 150px; left: -80px; animation-delay: 2s; }
+
+@keyframes fly {
+  0%   { transform: translateX(-100px) translateY(0); }
+  50%  { transform: translateX(50vw) translateY(-50px); }
+  100% { transform: translateX(110vw) translateY(0); }
+}
+
+/* --- Тема Хелловіну --- */
+body.halloween {
+  background: linear-gradient(135deg, #a55b00, #000);
+  color: orange;
+  transition: background 0.5s, color 0.5s;
+}
+
+/* --- Контент --- */
+main {
+  margin-top: 80px; /* відступ від панелі */
+  padding: 20px;
+}
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background: black;
+  color: orange;
+  transition: 0.3s;
+}
+button:hover {
+  background: orange;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+
+<!-- Контейнер для декорацій -->
+<div class="decorations" id="decorations" style="display: none;">
+  <img src="poi.png" class="web left">
+  <img src="poi3.png" class="web right">
+  <img src="images23.png" class="pumpkin left">
+  <img src="images23.png" class="pumpkin right">
+  <img src="5678.png" class="bat">
+  <img src="5678.png" class="bat">
+</div>
+
+<script>
+const btn = document.getElementById('toggleDecor');
+const decor = document.getElementById('decorations');
+let active = false;
+
+btn.addEventListener('click', () => {
+  active = !active;
+  if(active){
+    document.body.classList.add('halloween');
+    decor.style.display = 'block';
+    btn.textContent = "🕯️ Хелловін OFF";
+  } else {
+    document.body.classList.remove('halloween');
+    decor.style.display = 'none';
+    btn.textContent = "🕸️ Хелловін ON";
+  }
+});
+</script>
+
+</body>
+</html>

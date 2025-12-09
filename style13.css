@@ -1,0 +1,116 @@
+ #text1 {
+  color: #04f81c;
+  content: none;
+  font-size: 100px ;
+   font-family: 'Garamond', sans-serif; 
+   text-align: center;
+     white-space: pre-line;
+ }
+
+
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 1200px; /* висота контейнера = висота картинки */
+}
+
+.img-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+
+
+
+div .img1 {
+  margin: 100px;  /* зовнішній відступ */
+}
+
+img.img1 {
+     width: 400px;
+      position: relative;
+      animation: move 2s linear forwards;
+    }
+
+     @keyframes move {
+      0% {
+        left: 0;
+      }
+      100% {
+        left: calc(100vw - 1100px); /* до краю екрана */
+      }
+    }
+     #text2 {
+      position: absolute;
+  top: 400px;
+  right: calc(100vw - 500px); /* місце, куди піде текст */
+  font-size: 35px;
+  color: #ff9500;
+  opacity: 0; /* спочатку невидимий */
+  animation: textAppear 1s forwards;
+  animation-delay: 2s; /* чекаємо, поки картинка завершить рух */
+
+}
+
+@keyframes textAppear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#text3 {
+  position: absolute;
+  top: 200px;
+  left: calc(100vw - 500px); /* місце, куди піде текст */
+  font-size: 35px;
+  color: #ff9500;
+  opacity: 0; /* спочатку невидимий */
+  animation: textAppear 1s forwards;
+  animation-delay: 2s; /* чекаємо, поки картинка завершить рух */
+}
+@keyframes textAppear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#text4 {
+  text-align: center;
+  font-size: 50px;
+  color: #0098af
+}
+
+#img1 {
+  width: 100px;
+  height: 100px;
+}
+
+
+img.img2 {
+  width: 736px;
+  height: 588px;
+}
+
+.song-title {
+  font-family: 'Georgia', serif; /* приклад шрифту */
+  font-size: 30px;               /* розмір шрифту */
+  font-weight: bold;             /* жирний */
+  color: #d22;                   /* колір тексту */
+}
+
+#img1 {
+  width: 100px;
+  height: 100px;
+}
+
+
+img.img2 {
+  width: 736px;
+  height: 588px;
+}
+
+.song2-title {
+  font-family: 'Georgia', serif; /* приклад шрифту */
+  font-size: 30px;               /* розмір шрифту */
+  font-weight: bold;             /* жирний */
+  color: #d22;                   /* колір тексту */
+}

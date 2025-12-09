@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Навігація</title>
+  <!-- Підключаємо CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Панель -->
+  <div class="navbar">
+    <img src="ggt.png" style="height: 30; width: 20;" alt="Логотип">
+
+    <div class="nav-links">
+      <a href="index.html">Головна</a>
+      <a href="page1.html">Перелік пісень</a>
+      <a href="page2.html">Цікава інформація</a>
+      <a href="page3.html">Комунікація</a>
+      <a href="page4.html">Гра-вікторина</a>
+    </div>
+  </div>
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Гра з метеликами</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    user-select: none;
+    background: #111;
+    color: #fff;
+    height: 100vh;
+  }
+
+  /* Головна сторінка */
+  #startScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #222;
+  }
+  #startScreen button {
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  /* Панель з підрахунком */
+  #scorePanel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    padding: 5px 20px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .butterfly 
+  { 
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('blue2.png')
+    no-repeat center/contain; 
+    cursor: pointer; 
+    transition: transform 0.2s; }
+
+  
+
+  .question-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    color: #fff;
+    z-index: 1000;
+  }
+
+  .question-box button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .correct {
+    background-color: green !important;
+  }
+
+  .wrong {
+    background-color: red !important;
+  }
+
+  #wrongMessage {
+    color: red;
+    font-size: 18px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  #photo {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    border-radius: 10px;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- Стартова сторінка -->
+<div id="startScreen">
+  <h1>Гра з метеликами</h1>
+ <img id="photo" src="blue2.png" alt="Фото"></img>
+  <button id="startBtn">Почати гру</button>
+</div>
+
+<!-- Фотографія --> 
+ <img id="photo" src="blue2.png" alt="Фото" style="display:none;">
+ <!-- Напис під фото -->
+<div id="photoCaption" style="text-align:center; color:white; margin-top:10px;">
+  <br><br><br>Лови літаючих метеликів, та відповідай на питання!
+</div>
+ 
+
+
+<!-- Панель підрахунку -->
+<div id="scorePanel" style="display:none;">
+  <span>Правильно: <span id="correctCount">0</span></span>
+  <span>Неправильно: <span id="wrongCount">0</span></span>
+  <button id="endGameBtn">Закінчити гру</button>
+</div>
+
+<!-- Вікно питання -->
+<div class="question-box" id="questionBox">
+  <p id="questionText">Питання?</p>
+  <button class="answer" data-correct="false">Варіант 1</button>
+  <button class="answer" data-correct="true">Вірна відповідь</button>
+  <button class="answer" data-correct="false">Варіант 3</button>
+  <button class="answer" data-correct="false">Варіант 4</button>
+  <div id="wrongMessage">Ви відповіли неправильно!</div>
+</div>
+
+<script>
+// Дані для 15 метеликів
+const butterflyData = [
+  {question: "Яка пісня Шугара?", answers: ["Там у тополі","Тьотя","Кожний раз","Культура"], correct: 1},
+  {question: "Яка пісня Jerry Heil?", answers: ["ГЕНГСТА","Додай гучності","ЧУТИ ГІМН","Тато"], correct: 1},
+  {question: "Яка пісня PARFENIUK", answers: ["Цінувати життя","Знайди мене","Олєг","Накоїли"], correct: 3},
+  {question: "Яка пісня Volkanov?", answers: ["FENOMENAL'","Додайте світла","Я ОДРУЖУСЯ, МАМО","Пінаколада"],correct: 2},
+  {question: "Яка пісня YAKTAK?", answers: ["А хто хейтить","Люди","Провела екскурсію","Я тобі брехала"], correct: 1},
+  {question: "Яка пісня Klavdia Petrivna?", answers: ["Знайди мене","Тікток","Харбіт","А що?"], correct: 0},
+  {question: "Яка пісня Віталія Козловського?", answers: ["LaLaLA","Смарагдове небо","Моє море","Сумую"], correct: 2},
+  {question: "Яка пісня Skofka?", answers: ["Погані сусіди","Дощ паде","Вільні","Відриваючись"], correct: 0},
+  {question: "Яка пісня DOROFEEVA?", answers: ["Діва","Наречена","Додайте світла","Імператори"], correct: 2},
+  {question: "Яка пінся Artem Pivovarow?", answers: ["Назавжди","Муза","Міражі","Рандеву"], correct: 3},
+  {question: "Яка пісня alyona alyona?", answers: ["Читаю реп","Афини","Три полоси","Вітер"], correct: 0},
+  {question: "Яка пісня KOLA?", answers: ["Мокра","ШІ","НЕ БИЙ СОБАКУ!","Грушка"], correct: 1},
+  {question: "Яка пісня DREVO?", answers: ["Пінаколада","Додай гучності","Смарагдове небо","На даху"], correct: 2},
+  {question: "Яка пісня FIINKA?", answers: ["Культура","Смак-печаль","Уночі","Сину"], correct: 0},
+  {question: "Яка пісня Monatik?", answers: ["В небі танго","Кожний раз","Жага","Театр"], correct: 1},
+];
+
+const butterflyCount = 15;
+const butterflies = [];
+const questionBox = document.getElementById('questionBox');
+const questionText = document.getElementById('questionText');
+const wrongMessage = document.getElementById('wrongMessage');
+const correctSpan = document.getElementById('correctCount');
+const wrongSpan = document.getElementById('wrongCount');
+let currentButterfly = null;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
+// Кнопки старту і завершення
+const startBtn = document.getElementById('startBtn');
+const startScreen = document.getElementById('startScreen');
+const photo = document.getElementById('photo');
+const scorePanel = document.getElementById('scorePanel');
+const endGameBtn = document.getElementById('endGameBtn');
+
+startBtn.addEventListener('click', startGame);
+endGameBtn.addEventListener('click', endGame);
+
+function random(min, max) { return Math.random()*(max-min)+min; }
+
+function startGame(){
+  startScreen.style.display = 'none';
+  photo.style.display = 'block';
+  scorePanel.style.display = 'flex';
+
+  const sw = window.innerWidth;
+  const sh = window.innerHeight;
+
+  for(let i=0;i<butterflyCount;i++){
+    const b = document.createElement('div');
+    b.classList.add('butterfly');
+
+    // Рандомна позиція з врахуванням фото зверху
+    b.style.left = random(0, sw-50) + 'px';
+    b.style.top = random(200, sh-50) + 'px'; // 200px щоб не перекривати фото
+    document.body.appendChild(b);
+
+    const data = butterflyData[i];
+
+    butterflies.push({
+      el: b,
+      x: parseFloat(b.style.left),
+      y: parseFloat(b.style.top),
+      vx: random(-2,2),
+      vy: random(-2,2),
+      active: true,
+      question: data.question,
+      answers: data.answers,
+      correct: data.correct
+    });
+
+    b.addEventListener('click', () => {
+      showQuestion(butterflies[i]);
+    });
+  }
+  animate();
+}
+
+function animate() {
+  butterflies.forEach(b => {
+    if(!b.active) return;
+    b.x += b.vx;
+    b.y += b.vy;
+    if(b.x < 0 || b.x > window.innerWidth-50) b.vx *= -1;
+    if(b.y < 0 || b.y > window.innerHeight-50) b.vy *= -1;
+    b.el.style.left = b.x + 'px';
+    b.el.style.top = b.y + 'px';
+  });
+  requestAnimationFrame(animate);
+}
+
+function showQuestion(butterfly){
+  currentButterfly = butterfly;
+  questionBox.style.display = 'block';
+  questionText.textContent = butterfly.question;
+
+  const buttons = questionBox.querySelectorAll('.answer');
+  buttons.forEach((btn,i)=>{
+    btn.textContent = butterfly.answers[i];
+    btn.dataset.correct = (i===butterfly.correct).toString();
+    btn.classList.remove('correct','wrong');
+    btn.disabled = false;
+  });
+  wrongMessage.style.display = 'none';
+}
+
+questionBox.querySelectorAll('.answer').forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    const isCorrect = e.target.dataset.correct==="true";
+    if(isCorrect){
+      e.target.classList.add('correct');
+      if(currentButterfly){
+        currentButterfly.active=false;
+        currentButterfly.el.style.display='none';
+      }
+      correctAnswers++;
+      correctSpan.textContent = correctAnswers;
+    } else {
+      e.target.classList.add('wrong');
+      wrongAnswers++;
+      wrongSpan.textContent = wrongAnswers;
+      wrongMessage.style.display='block';
+    }
+    questionBox.querySelectorAll('button').forEach(b=>b.disabled=true);
+
+    setTimeout(()=>{
+      questionBox.style.display='none';
+      wrongMessage.style.display='none';
+      currentButterfly=null;
+    },1500);
+  });
+});
+
+function endGame(){
+  startScreen.style.display = 'flex';
+  startScreen.innerHTML = `
+    <h1>Гра завершена!</h1>
+    <p>Правильно: ${correctAnswers}</p>
+    <p>Неправильно: ${wrongAnswers}</p>
+    <button id="startBtn">Почати нову гру</button>
+  `;
+  correctAnswers = 0;
+  wrongAnswers = 0;
+  correctSpan.textContent = 0;
+  wrongSpan.textContent = 0;
+
+  butterflies.forEach(b=>b.el.remove());
+  butterflies.length = 0;
+  photo.style.display = 'none';
+  scorePanel.style.display = 'none';
+
+  document.getElementById('startBtn').addEventListener('click', startGame);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+/* Фон */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #283c86, #45a247);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Панель */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 98%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* Фото */
+.navbar img {
+  height: 50px;
+  border-radius: 10px;
+}
+
+/* Контейнер для кнопок */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Кнопки */
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 28px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #6dd5ed, #2193b0);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.5),
+              -4px -4px 10px rgba(255,255,255,0.2);
+  transition: all 0.2s ease;
+}
+
+/* Наведення */
+.nav-links a:hover {
+  background: linear-gradient(145deg, #56ab2f, #a8e063);
+  box-shadow: 6px 6px 15px rgba(0,0,0,0.6),
+              -4px -4px 12px rgba(255,255,255,0.3);
+  transform: translateY(-3px);
+}
+
+/* Натискання */
+.nav-links a:active {
+  box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6),
+              inset -3px -3px 6px rgba(255,255,255,0.2);
+  transform: translateY(2px);
+}
+
+.social-buttons img {
+  width: 40px;   
+  height: 40px;  
+  margin: 5px;   
+}
+
+
+
+
+
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Контент сайту займає весь доступний простір */
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Футер */
+    .footer {
+      background-color: #333; 
+      color: white;           
+      text-align: center;     
+      padding: 20px;          
+      font-size: 14px;
+    }
